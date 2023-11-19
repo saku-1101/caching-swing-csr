@@ -2,10 +2,20 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import EffectFetchPage from "./effect-fetch";
+import SWRPage from "./prc-swr";
+import TanstackPage from "./prc-tanstack";
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/effect-fetch",
     element: <EffectFetchPage />,
+  },
+  {
+    path: "/prc-swr",
+    element: <SWRPage />,
+  },
+  {
+    path: "/prc-tanstack",
+    element: <TanstackPage />,
   },
 ]);
 const portalDiv = document.getElementById("root")!;

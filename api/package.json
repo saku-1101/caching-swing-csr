@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^0.7.2",
+    "elysia": "0.7.15"
+  },
+  "devDependencies": {
+    "bun-types": "1.0.2"
+  },
+  "module": "src/index.js"
+}

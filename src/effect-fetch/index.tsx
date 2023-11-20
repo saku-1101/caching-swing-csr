@@ -29,6 +29,26 @@ export default function EffectFetchPage() {
     });
   }, []);
 
+  const handleUpdateUserName = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+
+    const res = await fetch(
+      `${import.meta.env.VITE_API_BASE_URL}/api/update/user`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: data.get("name") }),
+      }
+    );
+    const updatedUser = await res.json();
+    setUser(updatedUser);
+  };
+
   if (!data) {
     return <div>⏳loading...</div>;
   }
@@ -36,7 +56,7 @@ export default function EffectFetchPage() {
     <div>
       <Header data={{ ...data }} randomNumber={randomNumber} user={user} />
       <Content data={{ ...data }} randomNumber={randomNumber} />
-      <Person user={user} />
+      <Person user={user} handleUpdateUserName={handleUpdateUserName} />
       <BackButton />
       <LinkButton link="/prc-tanstack" label="tanstack" />
       <LinkButton link="/prc-swr" label="swr" />
